@@ -34,26 +34,46 @@ public class HashTable {
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
 
-            //ERROR: falta código de colisión
-            //Código añadido: Para hacer update si se repite la misma key pero tienen diferente valor
-        } else if (entries[hash].key == hashEntry.key){
-            entries[hash].value = hashEntry.value;
+            ITEMS++; //Count
+
         }
         else {
             HashEntry temp = entries[hash];
-            while (temp.next != null)
-                temp = temp.next;
-            //ERROR: falta código de comprovacion
-            //Código añadido: Para hacer un update a un elemento que ha colisionado
-            if (temp.key == key) {
-                temp.value = value;
-            } else {
-                temp.next = hashEntry;
+            if (entries[hash].key.equals(hashEntry.key)){ //Updateamos en primera posicion
+                entries[hash].value = hashEntry.value;
+            }else{
 
-                hashEntry.prev = temp;
+                while(temp.next != null) temp = temp.next;
+
+                if (temp.key.equals(hashEntry.key)){ //Updateamos en cualquier posicion que no sea la primera posicion
+                    temp.value = hashEntry.value;
+                }else {
+                    ITEMS++; //Count si hay collision
+
+                    temp.next = hashEntry;
+                    hashEntry.prev = temp;
+                }
             }
         }
     }
+
+    /*public void put(String key, String value) {
+        int hash = getHash(key);
+        final original.HashTable.HashEntry hashEntry = new original.HashTable.HashEntry(key, value);
+
+        if(entries[hash] == null) {
+            entries[hash] = hashEntry;
+        }
+        else {
+            original.HashTable.HashEntry temp = entries[hash];
+            while(temp.next != null)
+                temp = temp.next;
+
+            temp.next = hashEntry;
+            hashEntry.prev = temp;
+        }
+    }*/
+
 
     /**
      * Permet recuperar un element dins la taula.
@@ -65,58 +85,88 @@ public class HashTable {
         if(entries[hash] != null) {
             HashEntry temp = entries[hash];
 
-            //ERROR: falta código para solucionar el NullPointerException
-            //while( !temp.key.equals(key))
-            //                temp = temp.next;
-            //
-            //            return temp.value;
-            //Codigo solucionado:
+            try { //Get colision inexistente gracias al try y el catch
+                while(!temp.key.equals(key))
+                    temp = temp.next;
 
-            while(temp != null) {
-                if(temp.key.equals(key)){
-                    return temp.value;
-                }
-                temp = temp.next;
+                return temp.value;
+
+            }catch (Exception e){
+                return null;
             }
+
         }
 
         return null;
     }
+
+    /*public String get(String key) {
+        int hash = getHash(key);
+        if(entries[hash] != null) {
+            original.HashTable.HashEntry temp = entries[hash];
+
+            while( !temp.key.equals(key))
+                temp = temp.next;
+
+            return temp.value;
+        }
+
+        return null;
+    }*/
 
     /**
      * Permet esborrar un element dins de la taula.
      * @param key La clau de l'element a trobar.
      */
     public void drop(String key) {
+
+        int hash = getHash(key);
+
+        try{ //Drop colision inexistente gracias al try y el catch
+            if(entries[hash] != null) {
+                HashEntry temp = entries[hash];
+                while(!temp.key.equals(key)) temp = temp.next;
+
+                if(temp.prev == null && temp.next != null){ //Detectamos el caso de borrar el primero (con colision)
+
+                    temp.next.prev = null;
+                    entries[hash] = temp.next;
+
+                    ITEMS--; //Count
+                }else
+                if(temp.prev == null){
+                    entries[hash] = null;              //esborrar element únic (no col·lissió)
+                    ITEMS--; //Count
+                }else{
+                    if(temp.next != null){
+                        temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
+                    }
+                    temp.prev.next = temp.next;       //esborrem temp, per tant actualitzem el següent de l'anterior
+                    ITEMS--; //Count
+                }
+            }
+        }catch (Exception e){
+
+        }
+
+    }
+
+
+    /*public void drop(String key) {
         int hash = getHash(key);
         if(entries[hash] != null) {
 
-            HashEntry temp = entries[hash];
-
-            //ERROR: falta código para que reste el Item
-            /*while( !temp.key.equals(key))
+            original.HashTable.HashEntry temp = entries[hash];
+            while( !temp.key.equals(key))
                 temp = temp.next;
 
             if(temp.prev == null) entries[hash] = null;             //esborrar element únic (no col·lissió)
             else{
                 if(temp.next != null) temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
                 temp.prev.next = temp.next;                         //esborrem temp, per tant actualitzem el següent de l'anterior
-            }*/
-
-            if (temp.key.equals(key)) {
-                entries[hash] = temp.next;
-                ITEMS--; //Disminuim un ITEM cada vegada que esborrem
-                return;
-            }
-            while (temp.next != null && !temp.next.key.equals(key)) {
-                temp = temp.next;
-            }
-            if (temp.next != null) {
-                ITEMS--; //Disminuim un ITEM cada vegada que esborrem
-                temp.next = temp.next.next;
             }
         }
-    }
+    }*/
 
     private int getHash(String key) {
         // piggy backing on java string
@@ -247,7 +297,7 @@ public class HashTable {
 
     public static void main(String[] args) {
         HashTable hashTable = new HashTable();
-        
+
         // Put some key values.
         for(int i=0; i<30; i++) {
             final String key = String.valueOf(i);
