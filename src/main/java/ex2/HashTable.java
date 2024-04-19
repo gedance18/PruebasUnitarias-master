@@ -74,7 +74,6 @@ public class HashTable {
         }
     }*/
 
-
     /**
      * Permet recuperar un element dins la taula.
      * @param key La clau de l'element a trobar.

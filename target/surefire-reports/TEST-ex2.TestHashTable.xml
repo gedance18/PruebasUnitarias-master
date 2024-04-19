@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ex2.TestHashTable" time="0.063" tests="21" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\gedan\IdeaProjects\PruebasUnitarias-master\target\test-classes;C:\Users\gedan\IdeaProjects\PruebasUnitarias-master\target\classes;C:\Users\gedan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\gedan\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\gedan\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;C:\Users\gedan\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\gedan\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\gedan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\gedan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.5.2\junit-jupiter-params-5.5.2.jar;"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="Europe/Paris"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="ES"/>
+    <property name="sun.boot.library.path" value="C:\Users\gedan\.jdks\corretto-11.0.18\bin"/>
+    <property name="sun.java.command" value="C:\Users\gedan\AppData\Local\Temp\surefire6792860797618670311\surefirebooter9651621194485345551.jar C:\Users\gedan\AppData\Local\Temp\surefire6792860797618670311 2024-04-18T21-41-13_479-jvmRun1 surefire9530594110141854110tmp surefire_011167608216147363931tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\gedan\IdeaProjects\PruebasUnitarias-master\target\test-classes;C:\Users\gedan\IdeaProjects\PruebasUnitarias-master\target\classes;C:\Users\gedan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.5.2\junit-jupiter-engine-5.5.2.jar;C:\Users\gedan\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\gedan\.m2\repository\org\junit\platform\junit-platform-engine\1.5.2\junit-platform-engine-1.5.2.jar;C:\Users\gedan\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\gedan\.m2\repository\org\junit\platform\junit-platform-commons\1.5.2\junit-platform-commons-1.5.2.jar;C:\Users\gedan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.2\junit-jupiter-api-5.5.2.jar;C:\Users\gedan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.5.2\junit-jupiter-params-5.5.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\gedan"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-01-17"/>
+    <property name="java.home" value="C:\Users\gedan\.jdks\corretto-11.0.18"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\gedan\IdeaProjects\PruebasUnitarias-master"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\gedan\AppData\Local\Temp\surefire6792860797618670311\surefirebooter9651621194485345551.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.18+10-LTS"/>
+    <property name="user.name" value="gedan"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-11.0.18.10.1"/>
+    <property name="localRepository" value="C:\Users\gedan\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-11/issues/"/>
+    <property name="java.io.tmpdir" value="C:\Users\gedan\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2021.3"/>
+    <property name="java.version" value="11.0.18"/>
+    <property name="user.dir" value="C:\Users\gedan\IdeaProjects\PruebasUnitarias-master"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Users\gedan\.jdks\corretto-11.0.18\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files (x86)\BaseX\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Users\gedan\AppData\Local\Microsoft\WindowsApps;;C:\Users\gedan\AppData\Local\Programs\Microsoft VS Code\bin;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="11.0.18+10-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="putOneElementCollisionThirdUpdateInNoVoidTable7" classname="ex2.TestHashTable" time="0.041"/>
+  <testcase name="putOneElementCollisionSecondUpdateInNoVoidTable6" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="getOneElementWith3CollisionsWithoutExistence7" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="dropOneElementFirstCollision2" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="dropOneElementWith3CollisionsWithoutExistence7" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="getOneElementCollisionSecond3" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="getOneElementCollisionFirst2" classname="ex2.TestHashTable" time="0.001"/>
+  <testcase name="dropOneElement1" classname="ex2.TestHashTable" time="0.001"/>
+  <testcase name="getOneElementCollisionThird4" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="putOneElementInNoVoidTable2" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="putOneElementCollisionSecondInNoVoidTable3" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="dropOneElementThirdCollision4" classname="ex2.TestHashTable" time="0.001"/>
+  <testcase name="putOneElementUpdateInNoVoidTable5" classname="ex2.TestHashTable" time="0.001"/>
+  <testcase name="putOneElementInVoidTable1" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="getOneElementWithoutExistence5" classname="ex2.TestHashTable" time="0.001"/>
+  <testcase name="getOneElementCollisionFirst1InVoidTable" classname="ex2.TestHashTable" time="0.001"/>
+  <testcase name="dropOneElementWithoutExistence5" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="getOneElementCollisionWithoutExistence6" classname="ex2.TestHashTable" time="0.001"/>
+  <testcase name="dropOneElementSecondCollision3" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="dropOneElementCollisionWithoutExistence6" classname="ex2.TestHashTable" time="0"/>
+  <testcase name="putOneElementCollisionThirdInNoVoidTable4" classname="ex2.TestHashTable" time="0"/>
+</testsuite>

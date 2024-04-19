@@ -8,14 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestHashTable {
 
     @Test
-    void count() {
-    }
-
-    @Test
-    void size() {
-    }
-
-    @Test
     void put() {
         HashTable hashTable = new HashTable();
 
@@ -28,11 +20,6 @@ class TestHashTable {
                 " bucket[3] = [3, 2.0]\n" +
                 " bucket[4] = [4, A]\n" +
                 " bucket[9] = [un, false]",hashTable.toString());
-    }
-
-
-    @Test
-    void get() {
     }
 
     @Test
@@ -48,5 +35,17 @@ class TestHashTable {
                 " bucket[3] = [3, 2.0]\n" +
                 " bucket[4] = [4, A]\n" +
                 " bucket[9] = [un, false]",hashTable.toString());
+    }
+
+    @Test
+    void count() {
+    }
+
+    @Test
+    void size() {
+    }
+
+    @Test
+    void get() {
     }
 }

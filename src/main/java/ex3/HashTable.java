@@ -28,37 +28,45 @@ public class HashTable {
      * @param value El propi element que es vol afegir.
      */
     public void put(String key, String value) {
-
         int hash = getHash(key);
-
-
         final HashEntry hashEntry = new HashEntry(key, value);
 
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
-
-            ITEMS++; //Count
-
         }
         else {
+            // CODI ANTIC COMENTAT
+            /*else {
             HashEntry temp = entries[hash];
-            if (entries[hash].key.equals(hashEntry.key)){ //Updateamos en primera posicion
-                entries[hash].value = hashEntry.value;
-            }else{
+            while(temp.next != null)
+                temp = temp.next;
 
-                while(temp.next != null) temp = temp.next;
-
-                if (temp.key.equals(hashEntry.key)){ //Updateamos en cualquier posicion que no sea la primera posicion
-                    temp.value = hashEntry.value;
-                }else {
-                    ITEMS++; //Count si hay collision
-
-                    temp.next = hashEntry;
-                    hashEntry.prev = temp;
-
+            temp.next = hashEntry;
+            hashEntry.prev = temp;
+        }*/
+            HashEntry temp = entries[hash];
+            //if(temp.key.equals(key)) {
+            //temp.value = value; // Aquest if, simplement actualitza el valor si ja existeix la clau
+            //retornem a quan hem cridat el metode put
+            //return;
+            //}
+            while(temp != null) {
+                if(temp.key.equals(key)) {
+                    temp.value = value; // Aquest if, simplement actualitza el valor si ja existeix la clau
+                    //retornem a quan hem cridat el metode put
+                    return;
                 }
+                temp = temp.next; // Pasamos a los siguientes datos
             }
+            // Si la clau no existeix, fará la funció que feia abans de col·lisió
+            temp = entries[hash];
+            while(temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = hashEntry;
+            hashEntry.prev = temp;
         }
+        ITEMS++;
     }
 
     /**
@@ -71,16 +79,21 @@ public class HashTable {
         if(entries[hash] != null) {
             HashEntry temp = entries[hash];
 
-            try { //Get colision inexistente gracias al try y el catch
-                while(!temp.key.equals(key))
-                    temp = temp.next;
+            // CODI ANTIC COMENTAT
+            //while( !temp.key.equals(key))
+            //temp = temp.next;
 
-                return temp.value;
+            //return temp.value;
 
-            }catch (Exception e){
-                return null;
+            //Amb aquests canvis, en comptes de sortir del while si la clau no coincideix, es segueix recorrent
+            //la llista de elements, ja que hi pot haver-hi mes dades que no hem vist al mateix bucket
+            //Això ens permet que no surt-hi un NullPointerException
+            while(temp != null){
+                if(temp.key.equals(key)){
+                    return temp.value;
+                }
+                temp = temp.next;
             }
-
         }
 
         return null;
@@ -91,63 +104,39 @@ public class HashTable {
      * @param key La clau de l'element a trobar.
      */
     public void drop(String key) {
-
         int hash = getHash(key);
+        if(entries[hash] != null) {
 
-        try{ //Drop colision inexistente gracias al try y el catch
-            if(entries[hash] != null) {
-                HashEntry temp = entries[hash];
-                while(!temp.key.equals(key)) temp = temp.next;
-
-                if(temp.prev == null && temp.next != null){ //Detectamos el caso de borrar el primero (con colision)
-
-                    temp.next.prev = null;
-                    entries[hash] = temp.next;
-
-                    ITEMS--; //Count
-                }else
-                if(temp.prev == null){
-                    entries[hash] = null;              //esborrar element únic (no col·lissió)
-                    ITEMS--; //Count
-                }else{
-                    if(temp.next != null){
-                        temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
-                    }
-                    temp.prev.next = temp.next;       //esborrem temp, per tant actualitzem el següent de l'anterior
-                    ITEMS--; //Count
-                }
+            HashEntry temp = entries[hash];
+            if (temp.key.equals(key)) {
+                entries[hash] = temp.next;
+                ITEMS--; //Disminuim un ITEM cada vegada que esborrem
+                return;
             }
-        }catch (Exception e){
+            while (temp.next != null && !temp.next.key.equals(key)) {
+                temp = temp.next;
+            }
+            if (temp.next != null) {
+                ITEMS--; //Disminuim un ITEM cada vegada que esborrem
+                temp.next = temp.next.next;
+            }
 
+            // CODI ANTIC
+            /*while( !temp.key.equals(key))
+                temp = temp.next;
+
+            if(temp.prev == null) entries[hash] = null;             //esborrar element únic (no col·lissió)
+            else{
+                if(temp.next != null) temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
+                temp.prev.next = temp.next;                         //esborrem temp, per tant actualitzem el següent de l'anterior
+            }*/
         }
-
     }
 
     private int getHash(String key) {
         // piggy backing on java string
         // hashcode implementation.
         return key.hashCode() % SIZE;
-    }
-
-    private class HashEntry {
-        String key;
-        String value;
-
-        // Linked list of same hash entries.
-        HashEntry next;
-        HashEntry prev;
-
-        public HashEntry(String key, String value) {
-            this.key = key;
-            this.value = value;
-            this.next = null;
-            this.prev = null;
-        }
-
-        @Override
-        public String toString() {
-            return "[" + key + ", " + value + "]";
-        }
     }
 
     @Override
@@ -250,10 +239,7 @@ public class HashTable {
         return  foundKeys;
     }
 
-    public static void log(String msg) {
+    /*private*/public static void log(String msg) {
         System.out.println(msg);
-    } // Me he visto obligado a ponerlo en public
-    //private static void log(String msg) {
-    //        System.out.println(msg);
-    //    }
+    }
 }

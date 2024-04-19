@@ -131,7 +131,6 @@ class TestHashTable {
         HashTable hashTable = new HashTable();
         hashTable.put("1","valor");
         hashTable.put("12","colision");
-        //hashTable.put("23","232");
         Assertions.assertEquals("valor",hashTable.get("1"));
     }
 
@@ -152,6 +151,9 @@ class TestHashTable {
         hashTable.put("23","tercerValor");
         Assertions.assertEquals("tercerValor",hashTable.get("23"));
     }
+
+
+
 
     @org.junit.jupiter.api.Test
     void getOneElementWithoutExistence5() {
@@ -175,6 +177,7 @@ class TestHashTable {
         hashTable.put("23","colision3");
         Assertions.assertEquals(null,hashTable.get("34"));
     }
+
 
 
 
@@ -246,6 +249,8 @@ class TestHashTable {
         Assertions.assertEquals( 3,hashTable.count());
         Assertions.assertEquals( 16,hashTable.size());
     }
+
+
 
     @org.junit.jupiter.api.Test
     void dropOneElementWithoutExistence5() {
